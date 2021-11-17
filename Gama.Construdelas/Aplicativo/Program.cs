@@ -6,27 +6,38 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
+
+            var carlos = new Pessoa() { Nome = "Carlos" };
+
+            var carro1 = new Carro() { Marca = "GM", PotenciaMotor = 2.4, Nome = "Monza" };
+
+            Console.WriteLine(carro1.MostraDados());
             
-
-            /*
-             * Tipos primitivos
-             * 
-             short/integer/long = inteiros pequeno medio e grande
-
-             float/decimal/double = float, decimal, double são numeros não inteiros com casas decimais
-            
-             char/string = tipo texto, char 1 caracter, string colecao de caractes (1 ou mais caracteres)
-
-             bool => sim ou não
-             
-             DateTime => para trabalhar com datas
-
-             */
-
-            
-
-
-            //Console.WriteLine(valor);
         }
+    }
+
+
+    class Pessoa
+    {
+        public string Nome { get; set; }
+    }
+
+    class Carro
+    {
+
+        //propriedades, são proprias para guardar estado(valores)
+        public string Marca { get; set; }
+
+        public double PotenciaMotor { get; set; }
+
+        public string Nome { get; set; }
+
+
+        //método, são para guardar comportamentos
+        public string MostraDados()
+        {
+            return $"Marca: {Marca}, Potencia: {PotenciaMotor}, Nome: {Nome}";
+        }
+
     }
 }
