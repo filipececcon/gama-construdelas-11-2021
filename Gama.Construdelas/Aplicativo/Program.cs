@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Aplicativo
 {
@@ -7,7 +8,7 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
-
+            
             var nomes = new List<string>() { "joao", "maria", "jose" };
 
             Console.WriteLine("Insira um novo nome:");
@@ -16,11 +17,17 @@ namespace Aplicativo
 
             nomes.Add(novoNome);
 
-            foreach (var nome in nomes)
-            {
-                Console.WriteLine(nome);
-            }
+            Console.WriteLine(String.Join(", ", nomes));
+
+
+
+            Console.WriteLine("Remova um nome:");
+
+            var nomeRemovido = Console.ReadLine();
+
+            nomes.Remove(nomeRemovido);
+
+            Console.WriteLine(String.Join(", ", nomes));
         }
-        
     }
 }
