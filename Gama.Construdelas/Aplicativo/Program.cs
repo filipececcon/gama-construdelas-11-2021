@@ -7,11 +7,11 @@ namespace Aplicativo
         static void Main(string[] args)
         {
 
-            var happyFeet = new Pinguim(50);
+            var happyFeet = new Pinguim();
 
-            happyFeet.Kilos = 30;
+           
 
-            Console.WriteLine(happyFeet.Kilos);
+            //Console.WriteLine();
 
 
             
@@ -23,20 +23,29 @@ namespace Aplicativo
     
     abstract class Animal
     {
-        public double Kilos { get; set; }
+        private double Kilos { get; set; }
+
+        public Animal()
+        {
+            Kilos = 50;
+            Console.WriteLine(Kilos);
+        }
 
     }
 
     class Ave : Animal
     {
-
+        public Ave()
+        {
+            Console.WriteLine("Eu sou uma ave");
+        }
     }
 
     class Pinguim : Ave
     {
-        public Pinguim(double peso)
+        public Pinguim()
         {
-            Kilos = peso;
+            Console.WriteLine("Eu sou um pinguim");
         }
 
     }
