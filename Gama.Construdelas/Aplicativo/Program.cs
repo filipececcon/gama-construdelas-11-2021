@@ -9,7 +9,7 @@ namespace Aplicativo
 
             var carlos = new Pessoa() { Nome = "Carlos" };
 
-            var carro1 = new Carro() { Marca = "GM", PotenciaMotor = 2.4, Nome = "Monza" };
+            var carro1 = new Carro("VW", 1.5, "Gol");
 
             Console.WriteLine(carro1.MostraDados());
             
@@ -24,8 +24,7 @@ namespace Aplicativo
 
     class Carro
     {
-
-        //propriedades, são proprias para guardar estado(valores)
+              
         public string Marca { get; set; }
 
         public double PotenciaMotor { get; set; }
@@ -33,7 +32,14 @@ namespace Aplicativo
         public string Nome { get; set; }
 
 
-        //método, são para guardar comportamentos
+        //metodos construtores sempre tem o nome igual ao nome da classe
+        public Carro(string marca, double potencia, string nome)
+        {
+            Marca = marca;
+            PotenciaMotor = potencia;
+            Nome = nome;
+        }
+
         public string MostraDados()
         {
             return $"Marca: {Marca}, Potencia: {PotenciaMotor}, Nome: {Nome}";
