@@ -7,8 +7,10 @@
 
   <ItemGroup>
     <None Remove="Automotores\" />
+    <None Remove="Zoologico\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Automotores\" />
+    <Folder Include="Zoologico\" />
   </ItemGroup>
 </Project>
