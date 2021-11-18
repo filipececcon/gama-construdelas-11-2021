@@ -9,9 +9,9 @@ namespace Aplicativo
 
             var happyFeet = new Pinguim(50);
 
-            //happyFeet.Kilos = 30;
+            happyFeet.Kilos = 30;
 
-            //Console.WriteLine(happyFeet.Kilos);
+            Console.WriteLine(happyFeet.Kilos);
 
         }
     }
@@ -19,8 +19,7 @@ namespace Aplicativo
     
     abstract class Animal
     {
-        //o modificador de acesso protected faz com o que somente a propria classe e os filhos dela acessem
-        protected double Kilos { get; set; }
+        public double Kilos { get; protected set; }
     }
 
     class Ave : Animal
