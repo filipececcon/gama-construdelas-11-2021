@@ -7,18 +7,20 @@ namespace Aplicativo
         static void Main(string[] args)
         {
 
-            var happyFeet = new Pinguim();
+            var happyFeet = new Pinguim(50);
 
-            happyFeet.Kilos = 50;
+            happyFeet.Kilos = 30;
+
+            Console.WriteLine(happyFeet.Kilos);
 
 
-            //var animal = new Animal();
+            
            
             
         }
     }
 
-    //uma classe abstrata significa dizer que a mesma não pode ser instanciada
+    
     abstract class Animal
     {
         public double Kilos { get; set; }
@@ -32,6 +34,10 @@ namespace Aplicativo
 
     class Pinguim : Ave
     {
+        public Pinguim(double peso)
+        {
+            Kilos = peso;
+        }
 
     }
 }
