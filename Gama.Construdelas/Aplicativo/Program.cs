@@ -8,9 +8,9 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
-            //o tipo fila não é inicializado com nenhu valor pois sua estrutura é baseado na ordem de entrada
-            // conhecido com FIFO -> first in, first out (primeiro que entra é o primeiro que sai)
-            var nomes = new Queue<string>();
+            //o tipo Pilha não é inicializado com nenhum valor pois sua estrutura é baseado na ordem de entrada
+            // conhecido com LIFO -> last in, first out (ultimo que entra é o primeiro que sai)
+            var nomes = new Stack<string>();
 
             for (int i = 0; i < 3; i++)
             {
@@ -18,12 +18,12 @@ namespace Aplicativo
 
                 var novoNome = Console.ReadLine();
 
-                nomes.Enqueue(novoNome); //enqueue => serve para enfileirar um objeto ou tipo primitivo
+                nomes.Push(novoNome); //push => serve para empilhar um objeto ou tipo primitivo
 
                 Console.WriteLine("nomes: "+ String.Join(", ", nomes));
             }
 
-            Console.WriteLine($"Quantos nome vc quer desenfileirar ? [ maximo {nomes.Count}]");
+            Console.WriteLine($"Quantos nome vc quer desempilhar? [ maximo {nomes.Count} ]");
 
             var quantidade = Convert.ToInt32(Console.ReadLine());
 
@@ -36,7 +36,7 @@ namespace Aplicativo
 
                 Console.WriteLine($"[{i}] Desenfileirando um nome:");
 
-                nomes.Dequeue(); // dequeue => serve para desenfileirar posiçoes
+                nomes.Pop(); // pop => serve para desempilhar posiçoes
 
                 Console.WriteLine("nomes: " + String.Join(", ", nomes));
 
