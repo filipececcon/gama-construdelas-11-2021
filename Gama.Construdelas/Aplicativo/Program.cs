@@ -6,18 +6,32 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
-                      
 
-            var carro1 = new Carro("VW", 1.5, "Gol");
+            var happyFeet = new Pinguim();
 
-            var caminhao1 = new Caminhao("Volvo", 5.5, "CT505");
-
-
-            Console.WriteLine(caminhao1.MostraDados());
+            happyFeet.Kilos = 50;
 
 
-            //conceito DRY -> dont repeat yourself -> não se repita
+            //var animal = new Animal();
+           
             
         }
+    }
+
+    //uma classe abstrata significa dizer que a mesma não pode ser instanciada
+    abstract class Animal
+    {
+        public double Kilos { get; set; }
+
+    }
+
+    class Ave : Animal
+    {
+
+    }
+
+    class Pinguim : Ave
+    {
+
     }
 }
