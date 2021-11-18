@@ -7,16 +7,11 @@ namespace Aplicativo
         static void Main(string[] args)
         {
 
-            var salario1 = 100;
-            var salario2 = 4500;
-            var salario3 = 500;
-
-            //var media = (salario1 + salario2 + salario3) / 3;
-
-
             var salarios = new int[] { 100, 4500, 500, 600 };
 
             var total = 0;
+
+            salarios[4] = 500; // arrays não sao dinamicos, nao podem ser adicionadas novas posiçoes em tempo de execuçao
 
             for (int i = 0; i < salarios.Length; i++)
             {
