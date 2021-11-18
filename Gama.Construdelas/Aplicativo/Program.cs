@@ -8,41 +8,22 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
-            //o tipo Pilha não é inicializado com nenhum valor pois sua estrutura é baseado na ordem de entrada
-            // conhecido com LIFO -> last in, first out (ultimo que entra é o primeiro que sai)
-            var nomes = new Stack<string>();
+            var salarios = new Dictionary<string, int>();
 
-            for (int i = 0; i < 3; i++)
-            {
-                Console.WriteLine($"[{i}] Insira um novo nome:");
+            salarios.Add("joao", 5000);
 
-                var novoNome = Console.ReadLine();
+            salarios.Add("jose", 500);
 
-                nomes.Push(novoNome); //push => serve para empilhar um objeto ou tipo primitivo
+            //salarios.Add("jose", 500); // a chave de um dicionario necessita ser unica para encontrar o registro desejado
 
-                Console.WriteLine("nomes: "+ String.Join(", ", nomes));
-            }
-
-            Console.WriteLine($"Quantos nome vc quer desempilhar? [ maximo {nomes.Count} ]");
-
-            var quantidade = Convert.ToInt32(Console.ReadLine());
-
-            //ao se lançar novas exceçoes, é quando queremos "quebrar" a execuçao do código 
-            if (quantidade > nomes.Count) throw new Exception("Quantidade maior que o máximo");
+            salarios.Add("maria", 20000);
 
 
-            for (int i = 0; i < quantidade; i++)
-            {
+            var salario = salarios["maria"];
 
-                Console.WriteLine($"[{i}] Desenfileirando um nome:");
+            Console.WriteLine("o salario da maria é: R$" + salario);
 
-                nomes.Pop(); // pop => serve para desempilhar posiçoes
-
-                Console.WriteLine("nomes: " + String.Join(", ", nomes));
-
-            }
-
-
+            Console.Write(String.Join(",",salarios));
 
         }
     }
