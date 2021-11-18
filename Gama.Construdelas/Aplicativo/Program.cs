@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Aplicativo
 {
@@ -7,25 +8,19 @@ namespace Aplicativo
         static void Main(string[] args)
         {
 
-            var salarios = new int[] { 100, 4500, 500, 600 };
+            var nomes = new List<string>() { "joao", "maria", "jose" };
 
-            var total = 0;
+            Console.WriteLine("Insira um novo nome:");
 
-            //for (int i = 0; i < salarios.Length; i++)
-            //{
-            //    total = total + salarios[i];
-            //}
+            var novoNome = Console.ReadLine();
 
-            //para cada elemento da colecao é repetido o codigo dentro do escopo
-            foreach (var s in salarios)
+            nomes.Add(novoNome);
+
+            foreach (var nome in nomes)
             {
-                total = total + s;
+                Console.WriteLine(nome);
             }
-
-
-            var media = total / salarios.Length;
-
-            Console.WriteLine(media);
         }
+        
     }
 }
