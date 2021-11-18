@@ -11,12 +11,17 @@ namespace Aplicativo
 
             var total = 0;
 
-            salarios[4] = 500; // arrays não sao dinamicos, nao podem ser adicionadas novas posiçoes em tempo de execuçao
+            //for (int i = 0; i < salarios.Length; i++)
+            //{
+            //    total = total + salarios[i];
+            //}
 
-            for (int i = 0; i < salarios.Length; i++)
+            //para cada elemento da colecao é repetido o codigo dentro do escopo
+            foreach (var s in salarios)
             {
-                total = total + salarios[i];
+                total = total + s;
             }
+
 
             var media = total / salarios.Length;
 
