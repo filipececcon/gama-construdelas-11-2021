@@ -9,33 +9,23 @@ namespace Aplicativo
 
             var happyFeet = new Pinguim(50);
 
-           
+            //happyFeet.Kilos = 30;
 
-            //Console.WriteLine();
+            //Console.WriteLine(happyFeet.Kilos);
 
-
-            
-           
-            
         }
     }
 
     
     abstract class Animal
     {
-        private double Kilos { get; set; }
-
-        public Animal(double peso)
-        {
-            Kilos = peso;
-            Console.WriteLine(Kilos);
-        }
-
+        //o modificador de acesso protected faz com o que somente a propria classe e os filhos dela acessem
+        protected double Kilos { get; set; }
     }
 
     class Ave : Animal
     {
-        public Ave(double peso) : base(peso)
+        public Ave() 
         {
             Console.WriteLine("Eu sou uma ave");
         }
@@ -43,11 +33,11 @@ namespace Aplicativo
 
     class Pinguim : Ave
     {
-        public Pinguim(double peso) : base(peso)
+        public Pinguim(double peso) 
         {
             Console.WriteLine("Eu sou um pinguim");
 
-            
+            Kilos = peso;
         }
 
     }
