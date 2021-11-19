@@ -10,21 +10,63 @@ namespace Aplicativo
         {
             var salarios = new Dictionary<string, int>();
 
-            salarios.Add("joao", 5000);
+            var acao = 0;
 
-            salarios.Add("jose", 500);
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Informe a açao desejada:");
+                Console.WriteLine("1 - Adicionar Funcionario");
+                Console.WriteLine("2 - Exibir salario por nome");
+                Console.WriteLine("3 - Exibir os dados");
+                Console.WriteLine("4 - Encerrar");
 
-            //salarios.Add("jose", 500); // a chave de um dicionario necessita ser unica para encontrar o registro desejado
+                acao = Convert.ToInt32(Console.ReadLine());
 
-            salarios.Add("maria", 20000);
+                switch (acao)
+                {
+                    case 1: AdicionarFuncionario(salarios); break;
+                    case 2: ExibirSalarioPorNome(salarios); break;
+                    case 3: ExibirDados(salarios); break;
+                    default: break;
+                }
 
+                Console.ReadLine();
 
-            var salario = salarios["maria"];
+            } while (acao != 4);
 
-            Console.WriteLine("o salario da maria é: R$" + salario);
+            Console.WriteLine("-- Encerrado --");
+        }
 
-            Console.Write(String.Join(",",salarios));
+        static void AdicionarFuncionario(Dictionary<string,int> salarios)
+        {
+            Console.WriteLine("Digite o nome do funcionario:");
 
+            var nome = Console.ReadLine();
+
+            Console.WriteLine("Digite o salario do funcionario:");
+
+            var salario = Convert.ToInt32(Console.ReadLine());
+
+            salarios.Add(nome, salario);
+
+            Console.WriteLine($"Adicionado o funcionario {nome} com o salario {salario}");
+        }
+
+        static void ExibirSalarioPorNome(Dictionary<string, int> salarios)
+        {
+            Console.WriteLine("Digite o nome do funcionario:");
+
+            var nome = Console.ReadLine();
+
+            Console.WriteLine($"O salario da pessoa {nome} é R${ salarios[nome] }");
+        }
+
+        static void ExibirDados(Dictionary<string, int> salarios)
+        {
+            Console.WriteLine("Disponivel: " + String.Join(",", salarios.Keys));
+
+            Console.WriteLine("Media Salarial: " + salarios.Values.Sum() / salarios.Count);
         }
     }
 }
