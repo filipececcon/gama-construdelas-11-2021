@@ -9,10 +9,12 @@
     <None Remove="Automotores\" />
     <None Remove="Zoologico\" />
     <None Remove="Exercicios\" />
+    <None Remove="Colecoes\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Automotores\" />
     <Folder Include="Zoologico\" />
     <Folder Include="Exercicios\" />
+    <Folder Include="Colecoes\" />
   </ItemGroup>
 </Project>

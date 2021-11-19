@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Aplicativo.Colecoes;
 using Aplicativo.Exercicios;
 
 namespace Aplicativo
@@ -9,7 +10,9 @@ namespace Aplicativo
     {
         static void Main(string[] args)
         {
-            Exercicio1.Rodar();
+            ListasEFiltros.Rodar();
+
+            //Exercicio1.Rodar();
         }           
     }
 }
