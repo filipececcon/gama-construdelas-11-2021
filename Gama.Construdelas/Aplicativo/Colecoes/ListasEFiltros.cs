@@ -48,6 +48,7 @@ namespace Aplicativo.Colecoes
 
             #endregion
 
+            #region Trabalhando com listas de objetos complexos
 
             var funcionarios = new List<Funcionario>() {
 
@@ -66,14 +67,12 @@ namespace Aplicativo.Colecoes
                 .Select(f => $"{f.Nome} salario: {f.Salario} ");
 
 
-            var mediaSalarial = /* calcular a media salarial */;
+            var mediaSalarial = funcionarios.Select(f => f.Salario).Average();
 
-
+            Console.WriteLine(mediaSalarial);
 
             Console.WriteLine(String.Join(", ", funcionariosFiltrados));
-
-
-
+            #endregion
         }
     }
 }
