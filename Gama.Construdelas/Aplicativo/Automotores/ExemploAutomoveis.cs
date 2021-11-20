@@ -6,17 +6,13 @@ namespace Aplicativo.Automotores
         public static void Rodar()
         {
 
-            var carro = new Carro("VW", 3.0, "golf", 50);
+            var carro = new Carro("VW", 3.0, "golf", 50, ECombustivel.Diesel);
 
             var caminhao = new Caminhao("Volvo", 10.5, "Scania", 120);
 
-
-            carro.Abastecer("gasolina", 30);
-
+            caminhao.Abastecer(ECombustivel.Gasolina, 30);
 
             Console.WriteLine(carro.MostraDados());
-
-
         }
     }
 }
