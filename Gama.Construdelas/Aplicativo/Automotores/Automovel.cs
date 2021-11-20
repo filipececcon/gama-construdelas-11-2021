@@ -3,7 +3,7 @@ using Aplicativo.Automotores;
 
 namespace Aplicativo
 {
-    abstract class Automovel
+    public abstract class Automovel
     {
         public string Marca { get; set; }
         public double PotenciaMotor { get; set; }
@@ -12,14 +12,16 @@ namespace Aplicativo
         public double Tanque { get; set; }
         public double CapacidadeLitros { get; set; }
         public ECombustivel Combustivel { get; set; }
+        public int QtdePneus { get; set; }
 
-        public Automovel(string marca, double potencia, string nome, double maximo, ECombustivel combustivel)
+        public Automovel(string marca, double potencia, string nome, double maximo, ECombustivel combustivel, int qtdepenus)
         {
             Marca = marca;
             PotenciaMotor = potencia;
             Nome = nome;
             CapacidadeLitros = maximo;
             Combustivel = combustivel;
+            QtdePneus = qtdepenus;
         }
 
         public string MostraDados()

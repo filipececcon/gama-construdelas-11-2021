@@ -5,8 +5,8 @@ namespace Aplicativo
 {
     class Caminhao : Automovel
     {
-        public Caminhao(string marca, double potencia, string nome, double litros)
-            : base(marca, potencia, nome, litros, ECombustivel.Diesel)
+        public Caminhao(string marca, double potencia, string nome, double litros, int qtdepneus)
+            : base(marca, potencia, nome, litros, ECombustivel.Diesel, qtdepneus)
         {
            
         }

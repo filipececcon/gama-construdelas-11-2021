@@ -7,7 +7,7 @@ namespace Aplicativo
     class Carro : Automovel
     {
         public Carro(string marca, double potencia, string nome, double maximo, ECombustivel combustivel)
-            : base(marca, potencia, nome, maximo, combustivel)
+            : base(marca, potencia, nome, maximo, combustivel, 4)
         {
             
 
