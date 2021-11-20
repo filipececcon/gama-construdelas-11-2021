@@ -6,9 +6,11 @@ namespace Aplicativo.Exercicios
 
     Criar uma classe pessoa com as props: nome, idade
 
-    Criar uma classe funcionario com as props: salario(decimal), registro empresarial
+    Criar um enum ETipoContratacao com as propriedades CLT e PJ
 
-    A classe Funcionario deve herdar de pessoa
+    Criar uma classe funcionario com as props: salario(decimal), registro empresarial(string), tipo contratacao(ETipoContratacao)
+
+    A classe Funcionario deve herdar de pessoa 
 
     Criar a classe Diretor e herdar de funcionario
 
@@ -27,7 +29,6 @@ namespace Aplicativo.Exercicios
     a classe Funcionario não pode ser instanciada (criar objetos)
 
     o funcionario deve ter o comporatmento padrão (um método void) chamado BaterPonto()
-
 
     a classe Segurança deve implementar IRecepcao, IPorteiro, IVigilante
 
