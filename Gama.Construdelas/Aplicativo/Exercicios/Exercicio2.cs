@@ -8,7 +8,7 @@ namespace Aplicativo.Exercicios
 
     Criar um enum ETipoContratacao com as propriedades CLT e PJ
 
-    Criar uma classe funcionario com as props: salario(decimal), registro empresarial(string), tipo contratacao(ETipoContratacao)
+    Criar uma classe funcionario com as props: salario(decimal), registro empresarial(string), tipo contratacao (ETipoContratacao)
 
     A classe Funcionario deve herdar de pessoa 
 
