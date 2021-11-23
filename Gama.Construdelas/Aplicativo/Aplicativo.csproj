@@ -11,6 +11,7 @@
     <None Remove="Exercicios\" />
     <None Remove="Colecoes\" />
     <None Remove="Exercicio2\" />
+    <None Remove="Generics\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Automotores\" />
@@ -18,5 +19,6 @@
     <Folder Include="Exercicios\" />
     <Folder Include="Colecoes\" />
     <Folder Include="Exercicio2\" />
+    <Folder Include="Generics\" />
   </ItemGroup>
 </Project>
