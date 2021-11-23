@@ -72,8 +72,7 @@ namespace Aplicativo.Exercicios
 
             diretor.AumentarSalario(seguranca, 1000);
 
-            RegistrarPrestadorDeServico(diretor, "antonio");
-
+            RegistrarPrestadorDeServico(seguranca, "antonio");
         }
 
         public static void RegistrarPrestadorDeServico(IRecepcao qualquerUm, string nomeDoPrestador)
