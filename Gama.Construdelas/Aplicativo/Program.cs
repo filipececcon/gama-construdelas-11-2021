@@ -17,7 +17,7 @@ namespace Aplicativo
 
             //ExemploAutomoveis.Rodar();
 
-            Exercicio2.Rodar();
+            Execucao2.Rodar();
         }           
     }
 }

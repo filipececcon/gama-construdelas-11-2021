@@ -1,4 +1,6 @@
 ﻿using System;
+using Aplicativo.Exercicio2;
+
 namespace Aplicativo.Exercicios
 {
 
@@ -39,11 +41,46 @@ namespace Aplicativo.Exercicios
     implementar a forma de aumento de salario (pode usar a regra de negocio que quiser)
 
      */
-    public class Exercicio2
+    public class Execucao2
     {
         public static void Rodar()
         {
 
+            var seguranca = new Seguranca()
+            {
+                Nome = "Jose",
+                Idade = 45,
+                Salario = 4000,
+                TipoContratacao = ETipoContratacao.CLT
+            };
+
+            var recepcionista = new Recepcionista()
+            {
+                Nome = "Jose",
+                Idade = 45,
+                Salario = 4000,
+                TipoContratacao = ETipoContratacao.CLT
+            };
+
+            var diretor = new Diretor()
+            {
+                Nome = "Azdrubal",
+                Idade = 65,
+                Salario = 15000,
+                TipoContratacao = ETipoContratacao.CLT
+            };
+
+            diretor.AumentarSalario(seguranca, 1000);
+
+            RegistrarPrestadorDeServico(diretor, "antonio");
+
         }
+
+        public static void RegistrarPrestadorDeServico(IRecepcao qualquerUm, string nomeDoPrestador)
+        {
+            qualquerUm.RegistrarVisitante(nomeDoPrestador);            
+        }
+
+       
     }
 }

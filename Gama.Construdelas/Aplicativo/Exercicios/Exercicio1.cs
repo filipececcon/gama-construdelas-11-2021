@@ -26,13 +26,13 @@ namespace Aplicativo.Exercicios
     {
         public static void Rodar()
         {
-            var funcionarios = new Dictionary<int, Funcionario>();
+            var funcionarios = new Dictionary<int, FuncionarioPosto>();
 
-            funcionarios.Add(1, new Funcionario("joao", 5000));
-            funcionarios.Add(2, new Funcionario("maria", 500));
-            funcionarios.Add(3, new Funcionario("jose", 4000));
-            funcionarios.Add(4, new Funcionario("abraao", 15000));
-            funcionarios.Add(5, new Funcionario("noe", 8000));
+            funcionarios.Add(1, new FuncionarioPosto("joao", 5000));
+            funcionarios.Add(2, new FuncionarioPosto("maria", 500));
+            funcionarios.Add(3, new FuncionarioPosto("jose", 4000));
+            funcionarios.Add(4, new FuncionarioPosto("abraao", 15000));
+            funcionarios.Add(5, new FuncionarioPosto("noe", 8000));
 
             Console.WriteLine("Informe o nome do funcionario:");
 
@@ -47,7 +47,7 @@ namespace Aplicativo.Exercicios
             Console.WriteLine($"Media salarial: { funcionarios.Values.Select(f => f.Salario).Average() }");
         }
 
-        static void AumentarSalario(Dictionary<int, Funcionario> funcionarios, string nome)
+        static void AumentarSalario(Dictionary<int, FuncionarioPosto> funcionarios, string nome)
         {
             //usando Linq para consultas
             var f1 = funcionarios.Values.Single(f => f.Nome == nome);

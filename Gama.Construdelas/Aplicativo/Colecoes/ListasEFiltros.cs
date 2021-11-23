@@ -50,13 +50,13 @@ namespace Aplicativo.Colecoes
 
             #region Trabalhando com listas de objetos complexos
 
-            var funcionarios = new List<Funcionario>() {
+            var funcionarios = new List<FuncionarioPosto>() {
 
-                new Funcionario("jose", 5000),
-                new Funcionario("joao", 3000),
-                new Funcionario("maria", 10000),
-                new Funcionario("odete", 8000),
-                new Funcionario("genesio", 2000),
+                new FuncionarioPosto("jose", 5000),
+                new FuncionarioPosto("joao", 3000),
+                new FuncionarioPosto("maria", 10000),
+                new FuncionarioPosto("odete", 8000),
+                new FuncionarioPosto("genesio", 2000),
             };
 
 

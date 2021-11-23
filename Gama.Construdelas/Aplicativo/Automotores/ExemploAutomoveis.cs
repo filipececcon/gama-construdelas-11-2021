@@ -14,7 +14,7 @@ namespace Aplicativo.Automotores
 
             
             
-            var frentista = new Funcionario("jose", 4000);
+            var frentista = new FuncionarioPosto("jose", 4000);
 
             frentista.Abastecer(carro, ECombustivel.Gasolina, 60);
 

@@ -6,12 +6,12 @@ namespace Aplicativo.Exercicios
     //interfaces só podem ser implementadas, quando falamos de herança serve somente para classes
     //uma classe só pode herdar uma outra, e não mais de uma, porém implementaçao de interfaces são ilimitadas
     //interfaces não são instanciadas, somente classes não abstratas pode ser instanciadas (crira objetos)
-    class Funcionario : IFrentista, IBorracheiro
+    public class FuncionarioPosto : IFrentista, IBorracheiro
     {
         public string Nome { get; set; }
         public decimal Salario { get; set; }
 
-        public Funcionario(string nome, decimal salario)
+        public FuncionarioPosto(string nome, decimal salario)
         {
             Nome = nome;
             Salario = salario;
