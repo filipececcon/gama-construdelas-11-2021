@@ -1,8 +1,13 @@
 ﻿using System;
 namespace Aplicativo.Exercicio2
 {
-    public class Seguranca : Funcionario, IRecepcao, IPorteiro, IVigilante
+    public class Seguranca : Funcionario, IPorteiro, IVigilante, IObservadorDeCameras
     {
+        public void ObservarCameras()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RegistrarEntrada()
         {
             Console.WriteLine("Entrada registrada");
