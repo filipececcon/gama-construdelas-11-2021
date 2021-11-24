@@ -11,19 +11,19 @@ namespace Aplicativo.Generics
              Quando trabalhamos com generics deixamos a implementaçao flexivel para podemos utilizarmos para qualquer tipo
              
              */
-            var melancias = new Repositorio<Melancia>();
+            var melancias = new RepositorioDeFrutas<Melancia>();
 
-            var moranguetes = new Repositorio<Morango>();
+            var moranguetes = new RepositorioDeFrutas<Morango>();
 
 
 
 
             moranguetes.Add(new Morango());
             melancias.Add(new Melancia());
-            moranguetes.Add(new Manga());
 
-
-
+            var panelas = new RepositorioDeFrutas<Panela>();
+            var p = new Panela();
+            panelas.Add(p);
 
         }
     }

@@ -73,6 +73,17 @@ namespace Aplicativo.Exercicios
             diretor.AumentarSalario(seguranca, 1000);
 
             RegistrarPrestadorDeServico(seguranca, "antonio");
+
+
+
+            var repositorio = new RepositorioDeRecepcao<IRecepcao>();
+
+
+            repositorio.Add(recepcionista);
+
+            repositorio.Add(seguranca);
+
+            repositorio.Add(diretor);
         }
 
         public static void RegistrarPrestadorDeServico(IRecepcao qualquerUm, string nomeDoPrestador)
