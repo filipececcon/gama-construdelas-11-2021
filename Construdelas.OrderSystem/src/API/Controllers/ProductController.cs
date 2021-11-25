@@ -14,31 +14,68 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
     {
         
         [HttpGet]
-        public Dictionary<Guid, string> Get()
+        public IActionResult Get()
         {
-            return ProductRepository.Products;
+            return Ok(ProductRepository.Products);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public string GetById([FromRoute] Guid id)
+        public IActionResult GetById([FromRoute] Guid id)
         {
-            return ProductRepository.Products[id];
+            var nome = ProductRepository.Products.SingleOrDefault(x => x.Key == id).Value;
+
+            if (nome == null) return NotFound();
+
+            var response = new { nome, id };
+
+            return Ok(response);
         }
 
 
         [HttpPost]
-        public void Add([FromBody] AddProductRequest request)
+        public IActionResult Add([FromBody] AddProductRequest request)
         {
-            ProductRepository.Products.Add(Guid.NewGuid(), request.Nome);
+            var id = Guid.NewGuid();
+
+            ProductRepository.Products.Add(id, request.Nome);
+
+            var response = new { id, request.Nome};
+
+            return Created("", response);
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Remove([FromRoute] Guid id)
+        {
+            ProductRepository.Products.Remove(id);
 
-        
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateProductRequest request)
+        {
+            request.Id = id;
+
+            ProductRepository.Products[id] = request.Nome;
+
+            var response = new { id, request.Nome };
+
+            return Ok(response);
+        }
     }
 
     public class AddProductRequest
     {
+        public string Nome { get; set; }
+    }
+
+    public class UpdateProductRequest
+    {
+        public Guid Id { get; set; }
         public string Nome { get; set; }
     }
 }
