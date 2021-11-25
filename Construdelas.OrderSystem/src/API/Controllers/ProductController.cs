@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Construdelas.OrderSystem.Application.Commands;
+using Construdelas.OrderSystem.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,25 +24,17 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetById([FromRoute] Guid id)
-        {
-            var nome = ProductRepository.Products.SingleOrDefault(x => x.Key == id).Value;
-
-            if (nome == null) return NotFound();
-
-            var response = new { nome, id };
-
-            return Ok(response);
+        {            
+            return Ok();
         }
 
 
         [HttpPost]
         public IActionResult Add([FromBody] AddProductRequest request)
         {
-            var id = Guid.NewGuid();
+            var handler = new AddProductCommandHandler();
 
-            ProductRepository.Products.Add(id, request.Nome);
-
-            var response = new { id, request.Nome};
+            var response = handler.Handle(request);
 
             return Created("", response);
         }
@@ -49,8 +43,6 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [Route("{id}")]
         public IActionResult Remove([FromRoute] Guid id)
         {
-            ProductRepository.Products.Remove(id);
-
             return Ok();
         }
 
@@ -58,24 +50,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [Route("{id}")]
         public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateProductRequest request)
         {
-            request.Id = id;
-
-            ProductRepository.Products[id] = request.Nome;
-
-            var response = new { id, request.Nome };
-
-            return Ok(response);
+            return Ok();
         }
-    }
-
-    public class AddProductRequest
-    {
-        public string Nome { get; set; }
-    }
-
-    public class UpdateProductRequest
-    {
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-    }
+    }   
 }
