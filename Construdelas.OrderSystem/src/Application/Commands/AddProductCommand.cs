@@ -2,13 +2,14 @@
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
+using Construdelas.OrderSystem.Domain.Shared.Handlers;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddProductCommand : Handler<AddProductRequest, AddProductResponse>
+    public class AddProductCommand : IHandler<AddProductRequest, AddProductResponse>
     {
-        public override AddProductResponse Handle(AddProductRequest request)
+        public AddProductResponse Handle(AddProductRequest request)
         {
             var product = new Product(request.Name, request.UnitValue);
 

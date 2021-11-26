@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Construdelas.OrderSystem.Application
+namespace Construdelas.OrderSystem.Domain.Shared.Handlers
 {
     public abstract class Handler<TRequest, TResponse>
     {

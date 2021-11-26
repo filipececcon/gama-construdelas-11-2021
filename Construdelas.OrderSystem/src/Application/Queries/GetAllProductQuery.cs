@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
+using Construdelas.OrderSystem.Domain.Shared.Handlers;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetAllProductQuery : Handler<GetAllProductRequest, IEnumerable<GetAllProductResponse>>
+    public class GetAllProductQuery : IHandler<GetAllProductRequest, IEnumerable<GetAllProductResponse>>
     {
-        public override IEnumerable<GetAllProductResponse> Handle(GetAllProductRequest request)
+        public IEnumerable<GetAllProductResponse> Handle(GetAllProductRequest request)
         {
             return ProductRepository.Products.Select(p => new GetAllProductResponse()
             {

@@ -2,13 +2,14 @@
 using System.Linq;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
+using Construdelas.OrderSystem.Domain.Shared.Handlers;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetProductByIdQuery : Handler<GetProductByIdRequest, GetProductByIdResponse>
+    public class GetProductByIdQuery : IHandler<GetProductByIdRequest, GetProductByIdResponse>
     {
-        public override GetProductByIdResponse Handle(GetProductByIdRequest request)
+        public GetProductByIdResponse Handle(GetProductByIdRequest request)
         {
             var product = ProductRepository.Products.Single(x => x.Id == request.Id);
 

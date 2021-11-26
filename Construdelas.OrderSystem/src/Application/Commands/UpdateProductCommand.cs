@@ -2,13 +2,14 @@
 using System.Linq;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
+using Construdelas.OrderSystem.Domain.Shared.Handlers;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class UpdateProductCommand : Handler<UpdateProductRequest, UpdateProductResponse>
+    public class UpdateProductCommand : IHandler<UpdateProductRequest, UpdateProductResponse>
     {
-        public override UpdateProductResponse Handle(UpdateProductRequest request)
+        public UpdateProductResponse Handle(UpdateProductRequest request)
         {
             var product = ProductRepository.Products.Single(p => p.Id == request.Id);
 
