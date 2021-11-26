@@ -1,4 +1,14 @@
-##Infraestrutura
+# Projeto de Sistema de Pedidos
+
+O projeto consiste em abordar conceitos de code design (arquitetura de projeto) e design patterns (padrões de projeto) para apredizado.
+
+### Entidades
+
+- Order:
+- OrdemItem:
+- Product:
+
+## Infraestrutura
 
 Para erguer o ambiente de base de dados na maquina com o docker basta executar a linha abaixo no terminal:
 
