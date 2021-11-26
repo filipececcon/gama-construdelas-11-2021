@@ -6,7 +6,7 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetProductByIdQueryHandler : Handler<GetProductByIdRequest, GetProductByIdResponse>
+    public class GetProductByIdQuery : Handler<GetProductByIdRequest, GetProductByIdResponse>
     {
         public override GetProductByIdResponse Handle(GetProductByIdRequest request)
         {

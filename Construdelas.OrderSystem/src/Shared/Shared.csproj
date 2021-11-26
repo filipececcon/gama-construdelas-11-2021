@@ -2,13 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Construdelas.OrderSystem.Domain.OrderManagement</RootNamespace>
-    <AssemblyName>Construdelas.OrderSystem.Domain.OrderManagement</AssemblyName>
+    <RootNamespace>Construdelas.OrderSystem.Domain.Shared</RootNamespace>
+    <AssemblyName>Construdelas.OrderSystem.Domain.Shared</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
   <ItemGroup>
     <None Remove="Entities\" />
   </ItemGroup>

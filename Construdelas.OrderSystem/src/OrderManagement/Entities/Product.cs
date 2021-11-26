@@ -1,4 +1,6 @@
 ﻿using System;
+using Construdelas.OrderSystem.Domain.Shared.Entities;
+
 namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
 {
     public class Product : Entity

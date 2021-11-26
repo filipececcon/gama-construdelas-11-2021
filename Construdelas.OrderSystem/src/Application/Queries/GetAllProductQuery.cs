@@ -7,7 +7,7 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetAllProductQueryHandler : Handler<GetAllProductRequest, IEnumerable<GetAllProductResponse>>
+    public class GetAllProductQuery : Handler<GetAllProductRequest, IEnumerable<GetAllProductResponse>>
     {
         public override IEnumerable<GetAllProductResponse> Handle(GetAllProductRequest request)
         {
@@ -19,8 +19,6 @@ namespace Construdelas.OrderSystem.Application.Queries
                 UnitValue = p.UnitValue,
                 UpdatedAt = p.UpdatedAt
             });
-
-
         }
     }
 }

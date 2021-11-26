@@ -6,7 +6,7 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddProductCommandHandler : Handler<AddProductRequest, AddProductResponse>
+    public class AddProductCommand : Handler<AddProductRequest, AddProductResponse>
     {
         public override AddProductResponse Handle(AddProductRequest request)
         {
@@ -14,9 +14,12 @@ namespace Construdelas.OrderSystem.Application.Commands
 
             ProductRepository.Products.Add(product);
 
-            var response = new AddProductResponse() { Id = product.Id, Name = product.Name, CreatedAt = product.CreatedAt };
-
-            return response;
+            return new AddProductResponse()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                CreatedAt = product.CreatedAt
+            };
         }
     }
 }

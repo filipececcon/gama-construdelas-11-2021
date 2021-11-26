@@ -6,7 +6,7 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class RemoveProductByIdCommandHandler : Handler<RemoveProductByIdRequest, RemoveProductByIdResponse>
+    public class RemoveProductByIdCommand : Handler<RemoveProductByIdRequest, RemoveProductByIdResponse>
     {
         public override RemoveProductByIdResponse Handle(RemoveProductByIdRequest request)
         { 

@@ -6,7 +6,7 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class UpdateProductCommandHandler : Handler<UpdateProductRequest, UpdateProductResponse>
+    public class UpdateProductCommand : Handler<UpdateProductRequest, UpdateProductResponse>
     {
         public override UpdateProductResponse Handle(UpdateProductRequest request)
         {

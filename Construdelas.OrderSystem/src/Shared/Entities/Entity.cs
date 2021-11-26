@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
+namespace Construdelas.OrderSystem.Domain.Shared.Entities
 {
-    public abstract class Entity
+    public class Entity 
     {
         public Guid Id { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -16,5 +16,6 @@ namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
             UpdatedAt = now;
             IsActive = true;
         }
+
     }
 }

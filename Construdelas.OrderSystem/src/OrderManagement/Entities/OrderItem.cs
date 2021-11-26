@@ -1,4 +1,6 @@
 ﻿using System;
+using Construdelas.OrderSystem.Domain.Shared.Entities;
+
 namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
 {
     public class OrderItem : Entity
@@ -12,8 +14,6 @@ namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
             Product = product;
             Quantity = quantity;
         }
-
-
 
         public decimal GetSubtotal()
         {

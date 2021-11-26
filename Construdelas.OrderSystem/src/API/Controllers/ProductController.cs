@@ -21,7 +21,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             var request = new GetAllProductRequest();
 
-            var handler = new GetAllProductQueryHandler();
+            var handler = new GetAllProductQuery();
 
             var response = handler.Handle(request);
 
@@ -34,7 +34,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             var request = new GetProductByIdRequest() { Id = id };
 
-            var handler = new GetProductByIdQueryHandler();
+            var handler = new GetProductByIdQuery();
 
             var response = handler.Handle(request);
 
@@ -45,9 +45,9 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] AddProductRequest request)
         {
-            var handler = new AddProductCommandHandler();
+            var command = new AddProductCommand();
 
-            var response = handler.Handle(request);
+            var response = command.Handle(request);
 
             return Created("", response);
         }
@@ -58,7 +58,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             var request = new RemoveProductByIdRequest() { Id = id};
 
-            var handler = new RemoveProductByIdCommandHandler();
+            var handler = new RemoveProductByIdCommand();
 
             var response = handler.Handle(request);
 
@@ -71,7 +71,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             request.Id = id;
 
-            var handler = new UpdateProductCommandHandler();
+            var handler = new UpdateProductCommand();
 
             var response = handler.Handle(request);
 
