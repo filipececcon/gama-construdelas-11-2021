@@ -6,9 +6,9 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddProductCommandHandler
+    public class AddProductCommandHandler : Handler<AddProductRequest, AddProductResponse>
     {
-        public AddProductResponse Handle(AddProductRequest request)
+        public override AddProductResponse Handle(AddProductRequest request)
         {
             var product = new Product(request.Name, request.UnitValue);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Construdelas.OrderSystem.Application.Commands;
+using Construdelas.OrderSystem.Application.Queries;
 using Construdelas.OrderSystem.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +19,26 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(ProductRepository.Products);
+            var request = new GetAllProductRequest();
+
+            var handler = new GetAllProductQueryHandler();
+
+            var response = handler.Handle(request);
+
+            return Ok(response);
         }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetById([FromRoute] Guid id)
-        {            
-            return Ok();
+        {
+            var request = new GetProductByIdRequest() { Id = id };
+
+            var handler = new GetProductByIdQueryHandler();
+
+            var response = handler.Handle(request);
+
+            return Ok(response);
         }
 
 
@@ -43,14 +56,26 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [Route("{id}")]
         public IActionResult Remove([FromRoute] Guid id)
         {
-            return Ok();
+            var request = new RemoveProductByIdRequest() { Id = id};
+
+            var handler = new RemoveProductByIdCommandHandler();
+
+            var response = handler.Handle(request);
+
+            return Ok(response);
         }
 
         [HttpPut]
         [Route("{id}")]
         public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateProductRequest request)
         {
-            return Ok();
+            request.Id = id;
+
+            var handler = new UpdateProductCommandHandler();
+
+            var response = handler.Handle(request);
+
+            return Ok(response);
         }
     }   
 }

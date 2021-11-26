@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Construdelas.OrderSystem.Application.Requests
 {
-    public class GetProductByIdRequest
+    public class GetAllProductRequest
     {
-        public Guid Id { get; set; }
+        
     }
 }

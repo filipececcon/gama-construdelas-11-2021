@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Construdelas.OrderSystem.Application.Requests
 {
-    public class GetProductByIdRequest
+    public class RemoveProductByIdRequest
     {
         public Guid Id { get; set; }
     }
