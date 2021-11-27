@@ -27,18 +27,16 @@ namespace Construdelas.OrderSystem.Services.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
-
-            var connectionString = "Host=localhost;Port=5432;Pooling=true;Database=OrderSystemDb;User Id=postgres;Password=admin;";
-
+                        
             services
                 .AddEntityFrameworkNpgsql()
-                .AddDbContext<OrderSystemContext>(options => options.UseNpgsql(connectionString));
+                .AddDbContext<OrderSystemContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("OrderSystemDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
