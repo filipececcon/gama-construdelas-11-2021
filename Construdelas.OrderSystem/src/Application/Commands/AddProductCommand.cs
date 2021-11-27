@@ -1,21 +1,20 @@
 ﻿using System;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddProductCommand : IHandler<AddProductRequest, AddProductResponse>
+    public class AddProductCommand : IAddProductCommand
     {
-        private ProductRepository _repository;
+        private readonly IProductRepository _repository;
 
-        public AddProductCommand(ProductRepository repository)
+        public AddProductCommand(IProductRepository repository)
         {
             _repository = repository;
         }
-
 
         public AddProductResponse Handle(AddProductRequest request)
         {

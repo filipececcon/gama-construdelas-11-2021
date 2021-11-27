@@ -9,6 +9,8 @@ namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
         public int Quantity { get; set; }
         public decimal Subtotal { get; set; }
 
+        private OrderItem(){}
+
         public OrderItem(Product product, int quantity)
         {
             Product = product;

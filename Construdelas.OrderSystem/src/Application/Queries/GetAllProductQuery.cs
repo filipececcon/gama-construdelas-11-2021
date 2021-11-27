@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetAllProductQuery : IHandler<GetAllProductRequest, IQueryable<GetAllProductResponse>>
+    public class GetAllProductQuery : IGetAllProductQuery
     {
-        private readonly ProductRepository _repository;
+        private readonly IProductRepository _repository;
 
-        public GetAllProductQuery(ProductRepository repository)
+        public GetAllProductQuery(IProductRepository repository)
         {
             _repository = repository;
         }
@@ -27,7 +27,8 @@ namespace Construdelas.OrderSystem.Application.Queries
                     Name = p.Name,
                     CreatedAt = p.CreatedAt,
                     UnitValue = p.UnitValue,
-                    UpdatedAt = p.UpdatedAt
+                    UpdatedAt = p.UpdatedAt,
+                    IsActive = p.IsActive
                 });
         }
     }

@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
 using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 using Construdelas.OrderSystem.Infra.Data.Contexts;
 
 namespace Construdelas.OrderSystem.Infra.Data.Repositories
 {
-    public class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class OrderItemRepository : RepositoryBase<OrderItem>, IOrderItemRepository
     {
-        public ProductRepository(OrderSystemContext context) : base(context){ }   
+        public OrderItemRepository(OrderSystemContext context) : base(context){}
     }
 }

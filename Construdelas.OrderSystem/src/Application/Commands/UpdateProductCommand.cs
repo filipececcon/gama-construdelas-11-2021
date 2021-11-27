@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class UpdateProductCommand : IHandler<UpdateProductRequest, UpdateProductResponse>
+    public class UpdateProductCommand : IUpdateProductCommand
     {
-        private readonly ProductRepository _repository;
+        private readonly IProductRepository _repository;
 
-        public UpdateProductCommand(ProductRepository repository)
+        public UpdateProductCommand(IProductRepository repository)
         {
             _repository = repository;
         }
@@ -19,6 +19,8 @@ namespace Construdelas.OrderSystem.Application.Commands
         public UpdateProductResponse Handle(UpdateProductRequest request)
         {
             var product = _repository.GetById(request.Id);
+
+            if (!product.IsActive) throw new ArgumentException("o produto está inativo");
 
             product.Name = request.Name;
             product.UnitValue = request.UnitValue;

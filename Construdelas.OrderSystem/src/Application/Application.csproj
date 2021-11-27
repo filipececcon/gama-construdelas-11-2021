@@ -11,14 +11,16 @@
     <None Remove="Response\" />
     <None Remove="Handlers\" />
     <None Remove="Queries\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Requests\" />
     <Folder Include="Responses\" />
     <Folder Include="Commands\" />
     <Folder Include="Queries\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\OrderManagement\OrderManagement.csproj" />
   </ItemGroup>
 </Project>

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Linq;
+﻿using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetProductByIdQuery : IHandler<GetProductByIdRequest, GetProductByIdResponse>
+    public class GetProductByIdQuery : IGetProductByIdQuery
     {
-        private ProductRepository _repository;
+        private IProductRepository _repository;
 
-        public GetProductByIdQuery(ProductRepository repository)
+        public GetProductByIdQuery(IProductRepository repository)
         {
             _repository = repository;
         }

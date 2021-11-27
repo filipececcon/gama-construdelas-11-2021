@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Construdelas.OrderSystem.Application.Interfaces;
+using Construdelas.OrderSystem.Application.Queries;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 using Construdelas.OrderSystem.Infra.Data.Contexts;
+using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +41,8 @@ namespace Construdelas.OrderSystem.Services.API
                 .AddEntityFrameworkNpgsql()
                 .AddDbContext<OrderSystemContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("OrderSystemDb")));
+
+            ServiceRegister.Register(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

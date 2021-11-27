@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Construdelas.OrderSystem.Application.Commands;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Queries;
 using Construdelas.OrderSystem.Application.Requests;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 using Construdelas.OrderSystem.Infra.Data.Contexts;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -17,72 +19,60 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly ProductRepository _repository;
-
-        public ProductController(OrderSystemContext context)
-        {
-            _repository = new ProductRepository(context);
-        }
-
-
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromServices] IGetAllProductQuery query)
         {
-            var handler = new GetAllProductQuery(_repository);
-
-            var response = handler.Handle(new GetAllProductRequest());
-
-            return Ok(response);
+            return Ok(query.Handle(new GetAllProductRequest()));
         }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public IActionResult GetById([FromServices] IGetProductByIdQuery query, [FromRoute] Guid id)
         {
             var request = new GetProductByIdRequest() { Id = id };
 
-            var handler = new GetProductByIdQuery(_repository);
-
-            var response = handler.Handle(request);
-
-            return Ok(response);
+            return Ok(query.Handle(request));
         }
 
 
         [HttpPost]
-        public IActionResult Add([FromBody] AddProductRequest request)
-        {
-            var command = new AddProductCommand(_repository);
-
-            var response = command.Handle(request);
-
-            return Created("", response);
+        public IActionResult Add([FromServices] IAddProductCommand command, [FromBody] AddProductRequest request)
+        {            
+            return Created("", command.Handle(request));
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Remove([FromRoute] Guid id)
+        public IActionResult Remove([FromServices] IRemoveProductByIdCommand command, [FromRoute] Guid id)
         {
             var request = new RemoveProductByIdRequest() { Id = id };
 
-            var handler = new RemoveProductByIdCommand(_repository);
-            
-            var response = handler.Handle(request);
-
-            return Ok(response);
+            return Ok(command.Handle(request));
         }
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateProductRequest request)
+        public IActionResult Update([FromServices] IUpdateProductCommand command,[FromRoute] Guid id, [FromBody] UpdateProductRequest request)
         {
             request.Id = id;
 
-            var handler = new UpdateProductCommand(_repository);
+            try
+            {
+                return Ok(command.Handle(request));
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { ex.Message });
+            }
+        }
 
-            var response = handler.Handle(request);
+        [HttpPatch]
+        [Route("{id}")]
+        public IActionResult ChangeStatus([FromServices] IProductChangeStatusCommand command, [FromRoute] Guid id, [FromBody] ChangeStatusRequest request)
+        {
+            request.Id = id;
 
-            return Ok(response);
+            return Ok(command.Handle(request));
         }
     }   
 }

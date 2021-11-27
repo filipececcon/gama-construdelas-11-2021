@@ -8,5 +8,6 @@ namespace Construdelas.OrderSystem.Application.Responses
         public decimal UnitValue { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool IsActive { get; set; }
     }
 }

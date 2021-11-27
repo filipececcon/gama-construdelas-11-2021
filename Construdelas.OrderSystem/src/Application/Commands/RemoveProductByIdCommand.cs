@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Linq;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
+using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class RemoveProductByIdCommand : IHandler<RemoveProductByIdRequest, RemoveProductByIdResponse>
+    public class RemoveProductByIdCommand : IRemoveProductByIdCommand
     {
-        private readonly ProductRepository _repository;
+        private readonly IProductRepository _repository;
 
-        public RemoveProductByIdCommand(ProductRepository repository)
+        public RemoveProductByIdCommand(IProductRepository repository)
         {
             _repository = repository;
         }
