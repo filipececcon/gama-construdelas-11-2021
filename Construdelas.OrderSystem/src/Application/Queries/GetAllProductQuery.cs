@@ -8,20 +8,27 @@ using Construdelas.OrderSystem.Infra.Data.Repositories;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
-    public class GetAllProductQuery : IHandler<GetAllProductRequest, IEnumerable<GetAllProductResponse>>
+    public class GetAllProductQuery : IHandler<GetAllProductRequest, IQueryable<GetAllProductResponse>>
     {
-        public IEnumerable<GetAllProductResponse> Handle(GetAllProductRequest request)
-        {
-            return new List<GetAllProductResponse>();
+        private readonly ProductRepository _repository;
 
-            //return ProductRepository.Products.Select(p => new GetAllProductResponse()
-            //{
-            //    Id = p.Id,
-            //    Name = p.Name,
-            //    CreatedAt = p.CreatedAt,
-            //    UnitValue = p.UnitValue,
-            //    UpdatedAt = p.UpdatedAt
-            //});
+        public GetAllProductQuery(ProductRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public IQueryable<GetAllProductResponse> Handle(GetAllProductRequest request)
+        {
+            return _repository
+                .Get(p => p.IsActive)
+                .Select(p => new GetAllProductResponse()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    CreatedAt = p.CreatedAt,
+                    UnitValue = p.UnitValue,
+                    UpdatedAt = p.UpdatedAt
+                });
         }
     }
 }

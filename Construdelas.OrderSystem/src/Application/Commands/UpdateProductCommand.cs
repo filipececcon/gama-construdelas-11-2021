@@ -9,21 +9,29 @@ namespace Construdelas.OrderSystem.Application.Commands
 {
     public class UpdateProductCommand : IHandler<UpdateProductRequest, UpdateProductResponse>
     {
+        private readonly ProductRepository _repository;
+
+        public UpdateProductCommand(ProductRepository repository)
+        {
+            _repository = repository;
+        }
+
         public UpdateProductResponse Handle(UpdateProductRequest request)
         {
-            //var product = ProductRepository.Products.Single(p => p.Id == request.Id);
+            var product = _repository.GetById(request.Id);
 
-            //product.Name = request.Name;
-            //product.UnitValue = request.UnitValue;
-            //product.UpdatedAt = DateTime.Now;
+            product.Name = request.Name;
+            product.UnitValue = request.UnitValue;
 
-            return new UpdateProductResponse();
-            //{
-            //    Id = product.Id,
-            //    Name = product.Name,
-            //    UnitValue = product.UnitValue,
-            //    UpdatedAt = product.UpdatedAt
-            //};
+            _repository.Update(product);
+            
+            return new UpdateProductResponse()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                UnitValue = product.UnitValue,
+                UpdatedAt = product.UpdatedAt
+            };
 
         }
     }

@@ -9,13 +9,22 @@ namespace Construdelas.OrderSystem.Application.Commands
 {
     public class RemoveProductByIdCommand : IHandler<RemoveProductByIdRequest, RemoveProductByIdResponse>
     {
+        private readonly ProductRepository _repository;
+
+        public RemoveProductByIdCommand(ProductRepository repository)
+        {
+            _repository = repository;
+        }
+
         public RemoveProductByIdResponse Handle(RemoveProductByIdRequest request)
         { 
-            //var product = ProductRepository.Products.Single(x => x.Id == request.Id);
+            var product = _repository.GetById(request.Id);
 
-            //ProductRepository.Products.Remove(product);
+            product.IsActive = false;
 
-            return new RemoveProductByIdResponse();
+            _repository.Update(product);
+
+            return new RemoveProductByIdResponse() { IsActive = product.IsActive };
         }
     }
 }

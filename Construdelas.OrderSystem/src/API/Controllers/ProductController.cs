@@ -28,11 +28,9 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var request = new GetAllProductRequest();
+            var handler = new GetAllProductQuery(_repository);
 
-            var handler = new GetAllProductQuery();
-
-            var response = handler.Handle(request);
+            var response = handler.Handle(new GetAllProductRequest());
 
             return Ok(response);
         }
@@ -65,10 +63,10 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [Route("{id}")]
         public IActionResult Remove([FromRoute] Guid id)
         {
-            var request = new RemoveProductByIdRequest() { Id = id};
+            var request = new RemoveProductByIdRequest() { Id = id };
 
-            var handler = new RemoveProductByIdCommand();
-
+            var handler = new RemoveProductByIdCommand(_repository);
+            
             var response = handler.Handle(request);
 
             return Ok(response);
@@ -80,7 +78,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             request.Id = id;
 
-            var handler = new UpdateProductCommand();
+            var handler = new UpdateProductCommand(_repository);
 
             var response = handler.Handle(request);
 
