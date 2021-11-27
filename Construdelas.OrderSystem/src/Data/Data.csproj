@@ -8,11 +8,19 @@
 
   <ItemGroup>
     <None Remove="Repositories\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Relational" />
+    <None Remove="Contexts\" />
+    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
+    <Folder Include="Contexts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrderManagement\OrderManagement.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.12" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
   </ItemGroup>
 </Project>
