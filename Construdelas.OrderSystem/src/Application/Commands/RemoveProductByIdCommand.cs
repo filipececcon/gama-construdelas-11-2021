@@ -11,9 +11,9 @@ namespace Construdelas.OrderSystem.Application.Commands
     {
         public RemoveProductByIdResponse Handle(RemoveProductByIdRequest request)
         { 
-            var product = ProductRepository.Products.Single(x => x.Id == request.Id);
+            //var product = ProductRepository.Products.Single(x => x.Id == request.Id);
 
-            ProductRepository.Products.Remove(product);
+            //ProductRepository.Products.Remove(product);
 
             return new RemoveProductByIdResponse();
         }

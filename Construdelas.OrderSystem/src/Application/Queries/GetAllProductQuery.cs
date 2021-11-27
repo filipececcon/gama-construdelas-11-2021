@@ -12,14 +12,16 @@ namespace Construdelas.OrderSystem.Application.Queries
     {
         public IEnumerable<GetAllProductResponse> Handle(GetAllProductRequest request)
         {
-            return ProductRepository.Products.Select(p => new GetAllProductResponse()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                CreatedAt = p.CreatedAt,
-                UnitValue = p.UnitValue,
-                UpdatedAt = p.UpdatedAt
-            });
+            return new List<GetAllProductResponse>();
+
+            //return ProductRepository.Products.Select(p => new GetAllProductResponse()
+            //{
+            //    Id = p.Id,
+            //    Name = p.Name,
+            //    CreatedAt = p.CreatedAt,
+            //    UnitValue = p.UnitValue,
+            //    UpdatedAt = p.UpdatedAt
+            //});
         }
     }
 }

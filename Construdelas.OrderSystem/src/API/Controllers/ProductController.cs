@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Construdelas.OrderSystem.Application.Commands;
 using Construdelas.OrderSystem.Application.Queries;
 using Construdelas.OrderSystem.Application.Requests;
+using Construdelas.OrderSystem.Infra.Data.Contexts;
+using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,7 +17,14 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        
+        private readonly ProductRepository _repository;
+
+        public ProductController(OrderSystemContext context)
+        {
+            _repository = new ProductRepository(context);
+        }
+
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,7 +43,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         {
             var request = new GetProductByIdRequest() { Id = id };
 
-            var handler = new GetProductByIdQuery();
+            var handler = new GetProductByIdQuery(_repository);
 
             var response = handler.Handle(request);
 
@@ -45,7 +54,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] AddProductRequest request)
         {
-            var command = new AddProductCommand();
+            var command = new AddProductCommand(_repository);
 
             var response = command.Handle(request);
 

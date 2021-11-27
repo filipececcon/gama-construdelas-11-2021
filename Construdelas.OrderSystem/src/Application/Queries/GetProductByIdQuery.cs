@@ -9,9 +9,16 @@ namespace Construdelas.OrderSystem.Application.Queries
 {
     public class GetProductByIdQuery : IHandler<GetProductByIdRequest, GetProductByIdResponse>
     {
+        private ProductRepository _repository;
+
+        public GetProductByIdQuery(ProductRepository repository)
+        {
+            _repository = repository;
+        }
+
         public GetProductByIdResponse Handle(GetProductByIdRequest request)
         {
-            var product = ProductRepository.Products.Single(x => x.Id == request.Id);
+            var product = _repository.GetById(request.Id);
 
             return new GetProductByIdResponse()
             {

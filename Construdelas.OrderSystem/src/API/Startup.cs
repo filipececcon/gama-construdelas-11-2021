@@ -34,7 +34,7 @@ namespace Construdelas.OrderSystem.Services.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
 
-            var connectionString = "Host=postgres;Port=5432;Pooling=true;Database=OrderSystemDb;User Id=postgress;Password=admin;";
+            var connectionString = "Host=localhost;Port=5432;Pooling=true;Database=OrderSystemDb;User Id=postgres;Password=admin;";
 
             services
                 .AddEntityFrameworkNpgsql()

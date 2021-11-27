@@ -9,11 +9,19 @@ namespace Construdelas.OrderSystem.Application.Commands
 {
     public class AddProductCommand : IHandler<AddProductRequest, AddProductResponse>
     {
+        private ProductRepository _repository;
+
+        public AddProductCommand(ProductRepository repository)
+        {
+            _repository = repository;
+        }
+
+
         public AddProductResponse Handle(AddProductRequest request)
         {
             var product = new Product(request.Name, request.UnitValue);
 
-            ProductRepository.Products.Add(product);
+            _repository.Add(product);
 
             return new AddProductResponse()
             {
