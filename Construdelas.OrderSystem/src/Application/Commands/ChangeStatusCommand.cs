@@ -1,18 +1,17 @@
 ﻿using System;
+using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.Shared.Entities;
-using Construdelas.OrderSystem.Domain.Shared.Handlers;
 using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public abstract class ChangeStatusCommand<TEntity> : IHandler<ChangeStatusRequest, ChangeStatusResponse>
-           where TEntity : Entity        
+    public class ChangeStatusCommand<TEntity> : IChangeStatusCommand<TEntity> where TEntity : Entity
     {
-        protected IRepositoryBase<TEntity> _repository;
+        private IRepository<TEntity> _repository;
 
-        protected ChangeStatusCommand(IRepositoryBase<TEntity> repository)
+        public ChangeStatusCommand(IRepository<TEntity> repository)
         {
             _repository = repository;
         }

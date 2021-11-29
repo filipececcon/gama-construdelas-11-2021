@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Construdelas.OrderSystem.Infra.Data.Repositories
 {
-    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        protected DbContext _context;
+        private OrderSystemContext _context;
 
-        public RepositoryBase(DbContext context)
+        public Repository(OrderSystemContext context)
         {
             _context = context;
         }

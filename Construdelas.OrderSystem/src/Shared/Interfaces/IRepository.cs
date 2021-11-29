@@ -5,7 +5,7 @@ using Construdelas.OrderSystem.Domain.Shared.Entities;
 
 namespace Construdelas.OrderSystem.Domain.Shared.Interfaces
 {
-    public interface IRepositoryBase<TEntity> where TEntity : Entity
+    public interface IRepository<TEntity> where TEntity : Entity
     {
         void Add(TEntity entity);
         TEntity GetById(Guid id);

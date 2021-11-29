@@ -1,16 +1,16 @@
 ﻿using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
-
+using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
+using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Queries
 {
     public class GetProductByIdQuery : IGetProductByIdQuery
     {
-        private IProductRepository _repository;
+        private IRepository<Product> _repository;
 
-        public GetProductByIdQuery(IProductRepository repository)
+        public GetProductByIdQuery(IRepository<Product> repository)
         {
             _repository = repository;
         }

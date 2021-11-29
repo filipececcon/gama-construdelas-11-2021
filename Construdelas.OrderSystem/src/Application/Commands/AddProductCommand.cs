@@ -3,15 +3,15 @@ using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
     public class AddProductCommand : IAddProductCommand
     {
-        private readonly IProductRepository _repository;
+        private readonly IRepository<Product> _repository;
 
-        public AddProductCommand(IProductRepository repository)
+        public AddProductCommand(IRepository<Product> repository)
         {
             _repository = repository;
         }

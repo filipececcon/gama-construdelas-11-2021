@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Queries;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
 using Construdelas.OrderSystem.Infra.Data.Contexts;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Builder;

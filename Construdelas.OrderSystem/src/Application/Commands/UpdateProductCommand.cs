@@ -3,15 +3,16 @@ using System.Linq;
 using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
+using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
     public class UpdateProductCommand : IUpdateProductCommand
     {
-        private readonly IProductRepository _repository;
+        private readonly IRepository<Product> _repository;
 
-        public UpdateProductCommand(IProductRepository repository)
+        public UpdateProductCommand(IRepository<Product> repository)
         {
             _repository = repository;
         }

@@ -6,7 +6,7 @@ using Construdelas.OrderSystem.Application.Commands;
 using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Queries;
 using Construdelas.OrderSystem.Application.Requests;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
 using Construdelas.OrderSystem.Infra.Data.Contexts;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +20,9 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
     public class ProductController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get([FromServices] IGetAllProductQuery query)
+        public IActionResult Get([FromServices] IGetAllProductQuery query, [FromQuery] GetAllProductRequest request)
         {
-            return Ok(query.Handle(new GetAllProductRequest()));
+            return Ok(query.Handle(request));
         }
 
         [HttpGet]
@@ -68,7 +68,7 @@ namespace Construdelas.OrderSystem.Services.API.Controllers
 
         [HttpPatch]
         [Route("{id}")]
-        public IActionResult ChangeStatus([FromServices] IProductChangeStatusCommand command, [FromRoute] Guid id, [FromBody] ChangeStatusRequest request)
+        public IActionResult ChangeStatus([FromServices] IChangeStatusCommand<Product> command, [FromRoute] Guid id, [FromBody] ChangeStatusRequest request)
         {
             request.Id = id;
 

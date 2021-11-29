@@ -2,7 +2,7 @@
 using Construdelas.OrderSystem.Application.Commands;
 using Construdelas.OrderSystem.Application.Interfaces;
 using Construdelas.OrderSystem.Application.Queries;
-using Construdelas.OrderSystem.Domain.OrderManagement.Interfaces;
+using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +12,7 @@ namespace Construdelas.OrderSystem.Services.API
     {
         public static void Register(IServiceCollection services)
         {
-            RegisterRespositories(services);
+            RegisterRepositories(services);
             RegisterCommands(services);
             RegisterQueries(services);
         }
@@ -22,7 +22,7 @@ namespace Construdelas.OrderSystem.Services.API
             services.AddSingleton<IAddProductCommand, AddProductCommand>();
             services.AddSingleton<IUpdateProductCommand, UpdateProductCommand>();
             services.AddSingleton<IRemoveProductByIdCommand, RemoveProductByIdCommand>();
-            services.AddSingleton<IProductChangeStatusCommand, ProductChangeStatusCommand>();
+            services.AddSingleton(typeof(IChangeStatusCommand<>), typeof(ChangeStatusCommand<>));
         }
 
         private static void RegisterQueries(IServiceCollection services)
@@ -31,13 +31,9 @@ namespace Construdelas.OrderSystem.Services.API
             services.AddSingleton<IGetAllProductQuery, GetAllProductQuery>();
         }
 
-        private static void RegisterRespositories(IServiceCollection services)
+        private static void RegisterRepositories(IServiceCollection services)
         {
-            services.AddSingleton<IProductRepository, ProductRepository>();
-            services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
         }
-
-
     }
 }
