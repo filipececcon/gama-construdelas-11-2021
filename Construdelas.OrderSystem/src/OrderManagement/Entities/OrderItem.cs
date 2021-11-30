@@ -6,14 +6,17 @@ namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
     public class OrderItem : Entity
     {
         public Product Product { get; set; }
+        public Guid ProductId { get; set; }
+
+
         public int Quantity { get; set; }
         public decimal Subtotal { get; set; }
 
         private OrderItem(){}
 
-        public OrderItem(Product product, int quantity)
+        public OrderItem(Guid productId, int quantity)
         {
-            Product = product;
+            ProductId = productId;
             Quantity = quantity;
         }
 

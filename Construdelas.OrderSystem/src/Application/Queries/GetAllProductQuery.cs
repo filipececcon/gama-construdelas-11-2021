@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Construdelas.OrderSystem.Application.Interfaces;
+﻿using System.Linq;
+using Construdelas.OrderSystem.Application.Queries.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;

@@ -3,9 +3,9 @@ using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.Shared.Handlers;
 
-namespace Construdelas.OrderSystem.Application.Interfaces
+namespace Construdelas.OrderSystem.Application.Queries.Interfaces
 {
-    public interface IGetProductByIdQuery : IHandler<GetProductByIdRequest, GetProductByIdResponse>
+    public interface IGetByIdOrderItemQuery : IHandler<GetByIdOrderItemRequest, GetByIdOrderItemResponse>
     {
     }
 }

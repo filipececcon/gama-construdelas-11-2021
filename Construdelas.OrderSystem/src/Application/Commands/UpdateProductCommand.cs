@@ -1,32 +1,29 @@
 ﻿using System;
-using System.Linq;
-using Construdelas.OrderSystem.Application.Interfaces;
+using Construdelas.OrderSystem.Application.Commands.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
+using Construdelas.OrderSystem.Domain.Shared.Commands;
 using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class UpdateProductCommand : IUpdateProductCommand
+    public class UpdateProductCommand : CommandBase<Product>, IUpdateProductCommand
     {
-        private readonly IRepository<Product> _repository;
-
-        public UpdateProductCommand(IRepository<Product> repository)
+        public UpdateProductCommand(IRepository<Product> repository) : base(repository)
         {
-            _repository = repository;
         }
 
         public UpdateProductResponse Handle(UpdateProductRequest request)
         {
-            var product = _repository.GetById(request.Id);
+            var product = repository.GetById(request.Id);
 
             if (!product.IsActive) throw new ArgumentException("o produto está inativo");
 
             product.Name = request.Name;
             product.UnitValue = request.UnitValue;
 
-            _repository.Update(product);
+            repository.Update(product);
             
             return new UpdateProductResponse()
             {

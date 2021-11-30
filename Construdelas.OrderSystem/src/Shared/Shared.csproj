@@ -11,11 +11,13 @@
     <None Remove="Handlers\" />
     <None Remove="Interfaces\" />
     <None Remove="Predicate\" />
+    <None Remove="Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Handlers\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Predicates\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
 </Project>

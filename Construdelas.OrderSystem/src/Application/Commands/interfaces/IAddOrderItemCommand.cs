@@ -3,10 +3,9 @@ using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.Shared.Handlers;
 
-namespace Construdelas.OrderSystem.Application.Interfaces
+namespace Construdelas.OrderSystem.Application.Commands.Interfaces
 {
-    public interface IUpdateProductCommand : IHandler<UpdateProductRequest, UpdateProductResponse>
+    public interface IAddOrderItemCommand : IHandler<AddOrderItemRequest, AddOrderItemResponse>
     {
-        
     }
 }

@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Construdelas.OrderSystem.Application.Commands;
-using Construdelas.OrderSystem.Application.Interfaces;
-using Construdelas.OrderSystem.Application.Queries;
+using Construdelas.OrderSystem.Application.Commands.Interfaces;
+using Construdelas.OrderSystem.Application.Queries.Interfaces;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Domain.OrderManagement.Entities;
-using Construdelas.OrderSystem.Infra.Data.Contexts;
-using Construdelas.OrderSystem.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Construdelas.OrderSystem.Services.API.Controllers
 {

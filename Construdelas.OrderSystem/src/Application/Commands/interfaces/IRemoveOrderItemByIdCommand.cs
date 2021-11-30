@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Linq;
 using Construdelas.OrderSystem.Application.Requests;
 using Construdelas.OrderSystem.Application.Responses;
 using Construdelas.OrderSystem.Domain.Shared.Handlers;
 
-namespace Construdelas.OrderSystem.Application.Interfaces
+namespace Construdelas.OrderSystem.Application.Commands.Interfaces
 {
-    public interface IGetAllProductQuery : IHandler<GetAllProductRequest, IQueryable<GetAllProductResponse>>
+    public interface IRemoveOrderItemByIdCommand : IHandler<RemoveOrderItemRequest, RemoveOrderItemResponse>
     {
+        
     }
 }
