@@ -3,11 +3,14 @@ namespace Construdelas.OrderSystem.Application.Requests
 {
     public class RemoveOrderItemRequest
     {
-        public RemoveOrderItemRequest(Guid id)
+        public RemoveOrderItemRequest(Guid orderItemId, Guid orderId)
         {
-            Id = id;
+            OrderItemId = orderItemId;
+            OrderId = orderId;
         }
 
-        public Guid Id { get; set; }
+        public Guid OrderItemId { get; set; }
+
+        public Guid OrderId { get; set; }
     }
 }

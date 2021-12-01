@@ -9,11 +9,12 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Local' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Development' " />
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Controllers\" />
+    <None Remove="Swashbuckle.AspNetCore.Swagger" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -25,5 +26,8 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\OrderItemController.cs" />
   </ItemGroup>
 </Project>

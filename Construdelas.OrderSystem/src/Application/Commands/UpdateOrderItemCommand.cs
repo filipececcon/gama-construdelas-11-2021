@@ -25,6 +25,8 @@ namespace Construdelas.OrderSystem.Application.Commands
 
             var product = _productRepository.GetById(request.ProductId);
 
+            repository.Save();
+
             return new UpdateOrderItemResponse()
             {
                 ProductId = orderItem.Id,

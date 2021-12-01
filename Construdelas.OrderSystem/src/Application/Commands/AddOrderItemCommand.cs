@@ -7,27 +7,41 @@ using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddOrderItemCommand : CommandBase<OrderItem>, IAddOrderItemCommand
+    public class AddOrderItemCommand : CommandBase<Order>, IAddOrderItemCommand
     {
-        private readonly IRepository<Product> _productRepository;
+        private IRepository<Product> _productRepository;
+        private IRepository<OrderItem> _orderItemRepository;
 
-        public AddOrderItemCommand(IRepository<OrderItem> repository, IRepository<Product> productRepository) : base(repository)
+        public AddOrderItemCommand(IRepository<Order> repository, IRepository<Product> productRepository, IRepository<OrderItem> orderItemRepository) : base(repository)
         {
             _productRepository = productRepository;
+            _orderItemRepository = orderItemRepository;
         }
 
         public AddOrderItemResponse Handle(AddOrderItemRequest request)
         {
-            var orderItem = new OrderItem(request.ProductId, request.Quantity);
-
-            repository.Add(orderItem);
-
             var product = _productRepository.GetById(request.ProductId);
+
+            var order = repository.GetById(request.OrderId);
+
+            var orderItem = new OrderItem(request.ProductId, request.Quantity)
+            {
+                OrderId = order.Id,
+                Subtotal = product.UnitValue * request.Quantity
+            };
+
+            _orderItemRepository.Add(orderItem);
+            
+            order.Total += orderItem.Subtotal;
+
+            repository.Update(order);
+
+            repository.Save();
 
             return new AddOrderItemResponse()
             {
                 Id = orderItem.Id,
-                Subtotal = product.UnitValue * request.Quantity
+                Subtotal = orderItem.Subtotal
             };
             
         }

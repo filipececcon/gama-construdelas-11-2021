@@ -17,7 +17,10 @@ namespace Construdelas.OrderSystem.Application.Queries
 
         public GetByIdOrderItemResponse Handle(GetByIdOrderItemRequest request)
         {
-            var orderItem = _repository.GetById(request.Id);
+            var orderItem = _repository.GetById(request.ItemId, "Product");
+
+            if (orderItem == null) return null;
+
 
             return new GetByIdOrderItemResponse()
             {
@@ -25,7 +28,7 @@ namespace Construdelas.OrderSystem.Application.Queries
                 ProductName = orderItem.Product.Name,
                 ProductUnitValue = orderItem.Product.UnitValue,
                 Quantity = orderItem.Quantity,
-                Subtotal = orderItem.GetSubtotal()
+                Subtotal = orderItem.Subtotal
             };
         }
     }

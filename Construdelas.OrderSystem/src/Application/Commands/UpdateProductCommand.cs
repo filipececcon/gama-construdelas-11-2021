@@ -24,6 +24,8 @@ namespace Construdelas.OrderSystem.Application.Commands
             product.UnitValue = request.UnitValue;
 
             repository.Update(product);
+
+            repository.Save();
             
             return new UpdateProductResponse()
             {

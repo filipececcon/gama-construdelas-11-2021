@@ -22,9 +22,9 @@ namespace Construdelas.OrderSystem.Application.Queries
         {
             var predicate = PredicateBuilder.New<Order>();
 
+            var orders = repository.Get();
 
-            return repository
-                .Get(predicate)
+            var teste =  orders
                 .Select(o => new GetAllOrderResponse
                 {
                     Id = o.Id,
@@ -33,7 +33,8 @@ namespace Construdelas.OrderSystem.Application.Queries
                     Total = o.GetTotal(),
                     ItemsCount = o.Items.Count
                 });
-            ;
+
+            return teste;
         }
     }
 }

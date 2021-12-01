@@ -3,11 +3,8 @@ namespace Construdelas.OrderSystem.Application.Requests
 {
     public class GetByIdOrderItemRequest
     {
-        public GetByIdOrderItemRequest(Guid id)
-        {
-            Id = id;
-        }
+        public Guid OrderId { get; set; }
 
-        public Guid Id { get; set; }
+        public Guid ItemId { get; set; }
     }
 }

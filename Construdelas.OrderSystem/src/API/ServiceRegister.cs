@@ -25,10 +25,11 @@ namespace Construdelas.OrderSystem.Services.API
             services.AddSingleton<IUpdateProductCommand, UpdateProductCommand>();
             services.AddSingleton<IRemoveProductByIdCommand, RemoveProductByIdCommand>();
 
-
             services.AddSingleton<IAddOrderCommand, AddOrderCommand>();
-            
 
+            services.AddSingleton<IAddOrderItemCommand, AddOrderItemCommand>();
+            services.AddSingleton<IRemoveOrderItemByIdCommand, RemoveOrderItemByIdCommand>();
+            services.AddSingleton<IRemoveOrderByIdCommand, RemoveOrderByIdCommand>();
 
 
             services.AddSingleton(typeof(IChangeStatusCommand<>), typeof(ChangeStatusCommand<>));
@@ -39,6 +40,7 @@ namespace Construdelas.OrderSystem.Services.API
             services.AddSingleton<IGetProductByIdQuery, GetProductByIdQuery>();
             services.AddSingleton<IGetAllProductQuery, GetAllProductQuery>();
             services.AddSingleton<IGetAllOrderQuery, GetAllOrderQuery>();
+            services.AddSingleton<IGetByIdOrderItemQuery, GetByIdOrderItemQuery>();
         }
 
         private static void RegisterRepositories(IServiceCollection services)

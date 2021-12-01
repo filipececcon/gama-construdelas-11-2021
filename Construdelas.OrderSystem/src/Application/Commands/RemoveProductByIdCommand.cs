@@ -21,6 +21,8 @@ namespace Construdelas.OrderSystem.Application.Commands
 
             repository.Update(product);
 
+            repository.Save();
+
             return new RemoveProductByIdResponse() { IsActive = product.IsActive };
         }
     }

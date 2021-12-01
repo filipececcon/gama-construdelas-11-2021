@@ -23,6 +23,8 @@ namespace Construdelas.OrderSystem.Application.Commands
 
             _repository.Update(entity);
 
+            _repository.Save();
+
             return new ChangeStatusResponse() { Id = entity.Id, IsActive = entity.IsActive };
         }
     }

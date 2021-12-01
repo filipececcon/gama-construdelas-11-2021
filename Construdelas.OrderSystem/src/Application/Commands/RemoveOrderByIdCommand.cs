@@ -8,21 +8,19 @@ using Construdelas.OrderSystem.Domain.Shared.Interfaces;
 
 namespace Construdelas.OrderSystem.Application.Commands
 {
-    public class AddOrderCommand : CommandBase<Order>, IAddOrderCommand
+    public class RemoveOrderByIdCommand : CommandBase<Order>, IRemoveOrderByIdCommand
     {
-        public AddOrderCommand(IRepository<Order> repository) : base(repository)
+        public RemoveOrderByIdCommand(IRepository<Order> repository) : base(repository)
         {
         }
 
-        public AddOrderResponse Handle(AddOrderRequest request)
+        public RemoveOrderByIdResponse Handle(RemoveOrderByIdRequest request)
         {
-            var order = new Order();
-
-            repository.Add(order);
+            repository.Remove(request.Id);
 
             repository.Save();
 
-            return new AddOrderResponse() { Id = order.Id, CreatedAt = order.CreatedAt };
+            return new RemoveOrderByIdResponse();
         }
     }
 }

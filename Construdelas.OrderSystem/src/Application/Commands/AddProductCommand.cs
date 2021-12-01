@@ -20,6 +20,8 @@ namespace Construdelas.OrderSystem.Application.Commands
 
             repository.Add(product);
 
+            repository.Save();
+
             return new AddProductResponse()
             {
                 Id = product.Id,

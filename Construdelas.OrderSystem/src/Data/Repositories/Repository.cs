@@ -21,12 +21,22 @@ namespace Construdelas.OrderSystem.Infra.Data.Repositories
         {
             _context.Set<TEntity>().Add(entity);
 
-            _context.SaveChanges();
+
+
+            _context.Set<TEntity>().Where(x => x.CreatedAt > DateTime.Now).Select(c => c.CreatedAt);
+            //_context.SaveChanges();
         }
 
-        public TEntity GetById(Guid id)
+        public TEntity GetById(Guid id, params string[] includes)
         {
-            return _context.Set<TEntity>().Find(id);
+            var db = _context.Set<TEntity>().AsNoTracking();
+
+            foreach (var i in includes) {
+
+                db = db.Include(i);
+            }
+            
+            return db.SingleOrDefault(x => x.Id == id);
         }
 
         public void Update(TEntity product)
@@ -35,14 +45,19 @@ namespace Construdelas.OrderSystem.Infra.Data.Repositories
 
             _context.Set<TEntity>().Update(product);
 
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate = null)
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate = null, params string[] includes)
         {
-            return predicate == null
-                ? _context.Set<TEntity>().AsQueryable()
-                : _context.Set<TEntity>().Where(predicate).AsQueryable();
+            var db = _context.Set<TEntity>().AsNoTracking();
+
+            foreach(var i in includes)
+            {
+                db = db.Include(i);
+            }
+
+            return predicate == null ? db.AsQueryable() : db.Where(predicate);
         }
 
         public void Remove(Guid id)
@@ -51,6 +66,11 @@ namespace Construdelas.OrderSystem.Infra.Data.Repositories
 
             _context.Set<TEntity>().Remove(entity);
 
+            //_context.SaveChanges();
+        }
+
+        public void Save()
+        {
             _context.SaveChanges();
         }
     }

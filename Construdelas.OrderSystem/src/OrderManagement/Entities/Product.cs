@@ -8,6 +8,8 @@ namespace Construdelas.OrderSystem.Domain.OrderManagement.Entities
         public string Name { get; set; }
         public decimal UnitValue { get; set; }
 
+        private Product() { }
+
         public Product(string name, decimal unitValue)
         {
             Name = name;

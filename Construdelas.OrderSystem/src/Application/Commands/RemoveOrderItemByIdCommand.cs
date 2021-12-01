@@ -16,7 +16,9 @@ namespace Construdelas.OrderSystem.Application.Commands
 
         public RemoveOrderItemResponse Handle(RemoveOrderItemRequest request)
         {
-            repository.Remove(request.Id);
+            repository.Remove(request.OrderItemId);
+
+            repository.Save();
 
             return new RemoveOrderItemResponse();
         }
